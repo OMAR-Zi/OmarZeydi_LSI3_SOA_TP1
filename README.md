@@ -1,5 +1,10 @@
 # OmarZeydi_LSI3_SOA_TP1
 
+.Domaine: gestion de restaurant.
+
+.Entités: plat (id, nom, catégorie, prix, promotion), client (id, nom, téléphone, actif), commande (id, client, date) with lignes (plat, quantité).
+
+
 ---------------------------------------------------------Resultat:------------------------------------------------------
 
 <img width="1207" height="486" alt="Capture d&#39;écran 2026-10-24 060920" src="https://github.com/user-attachments/assets/6a380e10-69aa-4ad1-a3b2-f605a6bf5b62" />

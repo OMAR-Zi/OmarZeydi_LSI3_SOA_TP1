@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restaurant nom="ChokchMen">
+    <menu>
+        <plat id="PLAT2" promotion="true"> <!-- ERREUR 1 : id ne respecte pas P[0-9]+ -->
+            <nom>Salade méchouia</nom>
+            <categorie>entree</categorie>
+            <prix>6.00</prix>
+        </plat>
+        <plat id="P3" promotion="true">
+            <nom>Pizza</nom>
+            <categorie>pizza</categorie> <!-- ERREUR 2 : valeur hors énumération -->
+            <prix>-4.50</prix>           <!-- ERREUR 3 : prix négatif -->
+        </plat>
+        <plat id="P4" promotion="oui">   <!-- ERREUR 4 : booléen invalide -->
+            <nom>Thé à la menthe</nom>
+            <categorie>boisson</categorie>
+            <prix>2.50</prix>
+        </plat>
+    </menu>
+    <clients>
+        <client id="C1" actif="true">
+            <nom>Ali Ben Salah</nom>
+            <!-- ERREUR 5 : élément telephone manquant -->
+        </client>
+        <client id="C1" actif="false">   <!-- ERREUR 6 : id dupliqué -->
+            <nom>Sarra Trabelsi</nom>
+            <telephone>98765432</telephone>
+        </client>
+    </clients>
+    <commandes>
+        <commande id="CMD1" clientRef="P3" date="20-10-2026"> <!-- ERREURS 7 et 8 : clientRef de mauvais format, date invalide -->
+            <ligne platRef="P9" quantite="0"/> <!-- ERREURS 9 et 10 : P9 n'existe pas, quantité non positive -->
+        </commande>
+    </commandes>
+</restaurant>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restaurant nom="ChokchMen">
+    <menu>
+        <plat id="P1" promotion="false">
+            <nom>Couscous</nom>
+            <categorie>plat</categorie>
+            <prix>18.50</prix>
+        </plat>
+        <plat id="P2" promotion="true">
+            <nom>Salade méchouia</nom>
+            <categorie>entree</categorie>
+            <prix>6.00</prix>
+        </plat>
+        <plat id="P3" promotion="true">
+            <nom>Cheese cake</nom>
+            <categorie>dessert</categorie>
+            <prix>4.50</prix>
+        </plat>
+        <plat id="P4" promotion="false">
+            <nom>Thé à la menthe</nom>
+            <categorie>boisson</categorie>
+            <prix>3.50</prix>
+        </plat>
+    </menu>
+    <clients>
+        <client id="C1" actif="true">
+            <nom>Ali Ben Salah</nom>
+            <telephone>20123456</telephone>
+        </client>
+        <client id="C2" actif="false">
+            <nom>Sarra Trabelsi</nom>
+            <telephone>98765432</telephone>
+        </client>
+    </clients>
+    <commandes>
+        <commande id="CMD1" clientRef="C1" date="2026-10-20">
+            <ligne platRef="P1" quantite="2"/>
+            <ligne platRef="P4" quantite="2"/>
+        </commande>
+    </commandes>
+</restaurant>

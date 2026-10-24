@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="categorieType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="entree"/>
+            <xs:enumeration value="plat"/>
+            <xs:enumeration value="dessert"/>
+            <xs:enumeration value="boisson"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="prixType">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="platIdType">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="P[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="clientIdType">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="C[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="commandeIdType">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="CMD[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="platRefType">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="P[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="clientRefType">
+        <xs:restriction base="xs:IDREF">
+            <xs:pattern value="C[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="restaurant">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="menu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="plat" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nom" type="xs:string"/>
+                                        <xs:element name="categorie" type="categorieType"/>
+                                        <xs:element name="prix" type="prixType"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="platIdType" use="required"/>
+                                    <xs:attribute name="promotion" type="xs:boolean" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="client" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nom" type="xs:string"/>
+                                        <xs:element name="telephone" type="xs:string"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="clientIdType" use="required"/>
+                                    <xs:attribute name="actif" type="xs:boolean" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="commandes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="commande" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ligne" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="platRef" type="platRefType" use="required"/>
+                                                <xs:attribute name="quantite" type="xs:positiveInteger" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="commandeIdType" use="required"/>
+                                    <xs:attribute name="clientRef" type="clientRefType" use="required"/>
+                                    <xs:attribute name="date" type="xs:date" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="nom" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
